@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const UserHomeSector = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
+  const [data, setData] = useState(() => {
     const storedData = JSON.parse(localStorage.getItem("data")) || [];
-    setData(storedData);
-  }, []);
+    return storedData;
+  });
 
   return (
     <div className="p-16 flex-col text-center">

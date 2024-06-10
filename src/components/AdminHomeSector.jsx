@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AdminHomeSector = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(() => {
+    const storedData = JSON.parse(localStorage.getItem("data")) || [];
+    return storedData;
+  });
+
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [position, setPosition] = useState("");
-
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("data")) || [];
-    setData(storedData);
-  }, []);
 
   const addData = () => {
     if (
